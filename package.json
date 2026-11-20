@@ -1,0 +1,43 @@
+{
+  "name": "surfos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Surf school management — NestJS, TypeScript and MySQL",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/build-web.mjs",
+    "start": "node --env-file-if-exists=.env dist/main.js",
+    "dev": "node --env-file-if-exists=.env -r ts-node/register src/main.ts",
+    "db:migrate": "node --env-file-if-exists=.env --import tsx src/database/migrate.ts",
+    "db:seed": "node --env-file-if-exists=.env --import tsx src/database/seed.ts",
+    "test": "node --import tsx --test test/unit.test.ts",
+    "test:integration": "node --env-file-if-exists=.env --import tsx --test --test-concurrency=1 test/integration.test.ts",
+    "check": "tsc --noEmit && tsc -p web/tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0",
+    "@nestjs/platform-express": "^11.0.0",
+    "@nestjs/throttler": "^6.4.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "mysql2": "^3.14.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.0.0",
+    "esbuild": "^0.25.0",
+    "prettier": "^3.10.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}
